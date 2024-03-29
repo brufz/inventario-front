@@ -1,6 +1,6 @@
 
-    <div class="form-container">
-    <form [formGroup]="form" *ngIf="form" (ngSubmit)="createProduct()">
+<div class="form-container">
+    <form [formGroup]="editProductForm" *ngIf="editProductForm" (ngSubmit)="editProductById()">
         <div>
             <label for="nome">Nome:</label>
             <input type="text" id="nome" formControlName="nome" required>
@@ -38,7 +38,7 @@
             <input type="number" id="quantidade" formControlName="quantidade" required>
         </div>
   
-        <button type="submit">Criar Produto</button>
+        <button type="submit">Editar produto</button>
     </form>
   </div>
   

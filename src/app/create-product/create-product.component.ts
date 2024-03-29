@@ -13,8 +13,6 @@ import { error } from 'console';
 })
 export class CreateProductComponent implements OnInit {
 
-  // Remove the existing declaration of productForm
-  // Initialize the productForm with the correct name and type
   form: FormGroup | undefined;
 
   constructor(private productService: ProductService, private formBuilder: FormBuilder) { }

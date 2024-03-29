@@ -9,11 +9,17 @@ import { CreateProductComponent } from './create-product/create-product.componen
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GetProductComponent } from './get-product/get-product.component';
+import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    GetProductComponent,
+    DeleteProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
