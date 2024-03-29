@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+    background-color: #401612;
+    color: white;
+    
+  }
+  
+  .navbar-header {
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px 20px;
+    height: 80px;
+  }
+  
+  .navbar-links {
+    background-color: #BFB8BD /* Um tom um pouco mais escuro */
+  }
+  
+  .navbar-nav {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar-nav li {
+    padding: 10px;
+  }
+  
+  .navbar-nav li a {
+    color: #401612;
+    text-decoration: none;
+  }
+  
+  .active {
+    border-bottom: 2px solid yellow; /* Indicador de aba ativa */
+  }
+  

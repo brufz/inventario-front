@@ -1,6 +1,16 @@
 
-<div>
-<!-- <button routerLink="/create-product">Criar novo produto</button> -->
-</div>
-
-<router-outlet></router-outlet>
+<nav class="navbar">
+    <div class="navbar-header">Gerenciador de estoque</div>
+    <div class="navbar-links">
+      <ul class="navbar-nav">
+        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/get-product" routerLinkActive="active">Buscar Produto</a></li>
+        <li><a routerLink="/create-product" routerLinkActive="active">Criar Produto</a></li>
+        <li><a routerLink="/edit-product" routerLinkActive="active">Editar Produto</a></li>
+        <li><a routerLink="/delete-product" routerLinkActive="active">Deletar Produto</a></li>
+      </ul>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+  
+  

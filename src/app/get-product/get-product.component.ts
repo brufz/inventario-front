@@ -31,6 +31,8 @@ export class GetProductComponent implements OnInit {
     }
   }
 
+
+
   getProductByCategory() : void {
     
     if(this.categoria){

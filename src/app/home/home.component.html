@@ -1,0 +1,15 @@
+<div> 
+    <button (click)="getAllProducts()">Buscar todos os produtos</button>
+    <button (click)="clearAll()">Limpar</button>
+  </div>
+
+  <div *ngFor="let product of products">
+    <div *ngIf="product.nome != ''">
+      <p>Produto: {{ product.nome }}</p>
+      <p>Descrição: {{ product.descricao }}</p>
+      <p>Preço: {{ product.preco }}</p>
+      <p>Quantidade: {{ product.quantidade }}</p>
+      <p>Categoria: {{ product.categoria }}</p>
+      <p>------------------------------------</p>
+    </div>
+  </div>

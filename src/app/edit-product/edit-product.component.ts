@@ -21,12 +21,29 @@ export class EditProductComponent implements OnInit {
   ngOnInit(): void {
     this.editProductForm = this.formBuilder.group({
       nome: ['', Validators.required],
-      descricao: [''],
-      categoria: [''],
-      preco: [0],
-      quantidade: [0]
+      descricao: ['', Validators.required],
+      categoria: ['', Validators.required],
+      preco: [0, Validators.required],
+      quantidade: [0, Validators.required]
     });
     this.productId = +this.route.snapshot.paramMap.get('id')!;
+    if(this.productId){
+      this.productService.getProductById(this.productId, this.token)
+        .subscribe({
+          next: (product) => {
+            this.editProductForm?.patchValue({
+              nome: product.nome,
+              descricao: product.descricao,
+              categoria: product.categoria,
+              preco: product.preco,
+              quantidade: product.quantidade
+            });
+            },
+            error: (error) => {
+              console.log(error);
+          }
+        })
+    }
   }
 
   

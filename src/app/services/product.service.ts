@@ -18,6 +18,13 @@ private baseUrl = 'http://localhost:8080/produto'
     });
     return this.http.post<ProductDTO>(this.baseUrl, product, {headers});
 }
+
+    getAllProducts(token: String): Observable<ProductDTO[]> {
+      const headers = new HttpHeaders({
+        'Authorization':`Bearer ${token}`
+      })
+      return this.http.get<ProductDTO[]>(this.baseUrl, {headers});
+    }
   
     getProductById(id: number, token: String): Observable<ProductDTO> {
       const headers = new HttpHeaders({
