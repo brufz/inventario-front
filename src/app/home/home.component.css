@@ -1,0 +1,25 @@
+table {
+    width: 100%; /* Faz a tabela ocupar toda a largura disponível */
+    border-collapse: collapse; /* Remove o espaçamento entre as células */
+  }
+  
+  th, td {
+    border: 1px solid #ddd; /* Adiciona uma borda às células */
+    text-align: left; /* Alinha o texto à esquerda */
+    padding: 8px; /* Adiciona um pouco de espaço interno às células */
+  }
+  
+  th {
+    background-color: #401612; /* Cor de fundo para o cabeçalho */
+    color: white; /* Cor do texto para o cabeçalho */
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Cor de fundo alternada para as linhas */
+  }
+  
+  /* Estilo para quando não houver produtos */
+  table:empty {
+    display: none; /* Esconde a tabela se ela estiver vazia */
+  }
+  

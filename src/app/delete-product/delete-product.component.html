@@ -1,4 +1,13 @@
-<div>
-    <input type="number" [(ngModel)]="id" placeholder="Digite o ID do produto">
-    <button (click)="deleteProductById()">Deletar Produto</button>
+<div class="form-container">
+    <div *ngIf="!confirmDelete">
+      <input type="number" [(ngModel)]="id" placeholder="Digite o ID do produto" [class.is-invalid]="message.includes('erro')" required>
+      <button (click)="confirmDeletion()">Deletar Produto</button>
+    </div>
+    <div *ngIf="confirmDelete">
+      <p>Quer mesmo deletar este produto?</p>
+      <button (click)="deleteProductById()">Sim</button>
+      <button (click)="resetAndCancelDeletion()">Não</button>
+    </div>
+    <div *ngIf="message" class="message" [ngClass]="{'is-invalid': isError}">{{message}}</div>
 </div>
+  

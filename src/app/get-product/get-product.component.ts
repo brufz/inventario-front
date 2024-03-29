@@ -14,6 +14,8 @@ export class GetProductComponent implements OnInit {
   product: ProductDTO = {nome: '', descricao: '', preco: 0, quantidade: 0, categoria: ''}
   products: ProductDTO[] = [];
   categoria = this.product.categoria;
+  showIdInput: boolean = false;
+  showCategoryInput: boolean = false; 
 
   constructor(private productService: ProductService) { }
 
@@ -21,6 +23,7 @@ export class GetProductComponent implements OnInit {
   }
 
   getProductById() : void {
+    this.clearAll();
     if(this.id){
       this.productService.getProductById(this.id, this.token)
         .subscribe((response) => {
@@ -34,7 +37,7 @@ export class GetProductComponent implements OnInit {
 
 
   getProductByCategory() : void {
-    
+    this.clear();
     if(this.categoria){
       this.productService.getProductByCategory(this.categoria, this.token)
         .subscribe((response) => {
@@ -49,10 +52,14 @@ export class GetProductComponent implements OnInit {
   clear() : void {
     this.product = {nome: '', descricao: '', preco: 0, quantidade: 0, categoria: ''};
     this.id = undefined;
+    this.showIdInput = false;
+    this.showCategoryInput = false;
   }
 
   clearAll() : void {
     this.products = [];
     this.categoria = this.product.categoria;
+    this.showIdInput = false;
+    this.showCategoryInput = false;
   }
 }

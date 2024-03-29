@@ -1,35 +1,76 @@
-<div>
-    <input type="number" [(ngModel)]="id" placeholder="Digite o ID do produto">
-    <button (click)="getProductById()">Buscar Produto</button>
-    <button (click)="clear()">Limpar</button>
-  </div>
-  
-  <div *ngIf="product.nome != ''">
-    <p>Produto: {{ product.nome }}</p>
-    <p>Descrição: {{ product.descricao }}</p>
-    <p>Preço: {{ product.preco }}</p>
-    <p>Quantidade: {{ product.quantidade }}</p>
-    <p>Caterogia: {{product.categoria}}</p>
-  </div>
-
-  <div> 
-    <input type="text" [(ngModel)]="categoria" placeholder="Digite a categoria do produto">
-    <button (click)="getProductByCategory()">Buscar Produto Por categoria</button>
-    <button (click)="clearAll()">Limpar</button>
-  </div>
-
-  <div *ngFor="let product of products">
-    <div *ngIf="product.nome != ''">
-      <p>Produto: {{ product.nome }}</p>
-      <p>Descrição: {{ product.descricao }}</p>
-      <p>Preço: {{ product.preco }}</p>
-      <p>Quantidade: {{ product.quantidade }}</p>
-      <p>Categoria: {{ product.categoria }}</p>
-      <p>------------------------------------</p>
+<html>
+  <head></head>
+  <body>
+    <div class="search-container">
+      <div class="search-options" *ngIf="!showIdInput && !showCategoryInput && !product.nome && products.length === 0">
+        <button (click)="showIdInput=true; showCategoryInput=false">Buscar Produto por ID</button>
+        <button (click)="showCategoryInput=true; showIdInput=false">Buscar Produto por Categoria</button>
+      </div>
+    
+      <div *ngIf="showIdInput || product.nome">
+        <input class="button-id" type="number" [(ngModel)]="id" placeholder="Digite o ID do produto" *ngIf="showIdInput">
+        <button (click)="getProductById(); showIdInput=false; showCategoryInput=false" *ngIf="showIdInput">Buscar por ID</button>
+    
+        <div *ngIf="product.nome" class="product-details">
+          <h2>Resultado da Busca por ID</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Categoria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ product.nome }}</td>
+                <td>{{ product.descricao }}</td>
+                <td>{{ product.preco | currency:'BRL' }}</td>
+                <td>{{ product.quantidade }}</td>
+                <td>{{ product.categoria }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button (click)="clear(); clearAll()">Voltar</button>
+        </div>
+      </div>
+    
+      <div *ngIf="showCategoryInput || products.length > 0">
+        <input type="text" [(ngModel)]="categoria" placeholder="Digite a categoria" *ngIf="showCategoryInput">
+        <button (click)="getProductByCategory(); showIdInput=false; showCategoryInput=false" *ngIf="showCategoryInput">Buscar por Categoria</button>
+    
+        <div *ngIf="products.length > 0" class="category-details">
+          <h2>Resultado da Busca por Categoria</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Categoria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>{{ product.nome }}</td>
+                <td>{{ product.descricao }}</td>
+                <td>{{ product.preco | currency:'BRL' }}</td>
+                <td>{{ product.quantidade }}</td>
+                <td>{{ product.categoria }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button (click)="clear(); clearAll()">Voltar</button>
+        </div>
+      </div>
     </div>
-  </div>
+  </body>
+</html>
 
 
 
-  
-  
+
+

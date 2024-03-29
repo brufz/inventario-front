@@ -1,20 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html,body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 .navbar {
+    font-family: 'Bebas Neue', sans-serif;
     display: flex;
     flex-direction: column;
-    background-color: #401612;
+    background-color: #1B365C;
     color: white;
     
   }
   
   .navbar-header {
-    font-weight: bold;
-    font-size: 24px;
-    padding: 10px 20px;
-    height: 80px;
+    display: flex;
+  align-items: center; /* Centraliza os itens verticalmente */
+  justify-content: space-between; /* Espaçamento entre os itens da navbar */
+  background-color: #333; /* Cor de fundo da navbar */
+  color: white; /* Cor da fonte */
+  padding: 0 20px; /* Preenchimento lateral para não colar totalmente ao lado */
+  height: 100px; /* Ajuste conforme necessário para altura da navbar */
+  font-size: 40px;
   }
   
   .navbar-links {
-    background-color: #BFB8BD /* Um tom um pouco mais escuro */
+    background-color: #BFB8BD; /* Um tom um pouco mais escuro */
+    font-family: 'Times new roman', sans-serif;
   }
   
   .navbar-nav {
