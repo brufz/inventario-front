@@ -8,16 +8,25 @@
                 <div class="form-group">
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" formControlName="nome" required>
+                    <div *ngIf="form.get('nome')?.invalid && (form.get('nome')?.touched || form.get('nome')?.dirty)" class="error">
+                        <small *ngIf="form.get('nome')?.errors?.['required']">Este campo é obrigatório.</small>
+                    </div>
                 </div>
           
                 <div class="form-group">
                     <label for="descricao">Descrição:</label>
                     <textarea id="descricao" formControlName="descricao" required></textarea>
+                    <div *ngIf="form.get('descricao')?.invalid && (form.get('descricao')?.touched || form.get('descricao')?.dirty)" class="error">
+                        <small *ngIf="form.get('descricao')?.errors?.['required']">Este campo é obrigatório.</small>
+                    </div>
                 </div>
           
                 <div class="form-group">
                     <label for="preco">Preço:</label>
                     <input type="number" id="preco" formControlName="preco" required>
+                    <div *ngIf="form.get('preco')?.invalid && (form.get('preco')?.touched || form.get('preco')?.dirty)" class="error">
+                        <small *ngIf="form.get('preco')?.errors?.['required']">Este campo é obrigatório.</small>
+                    </div>
                 </div>
           
                 <div class="form-group">
@@ -40,6 +49,9 @@
                 <div class="form-group">
                     <label for="quantidade">Quantidade:</label>
                     <input type="number" id="quantidade" formControlName="quantidade" required>
+                    <div *ngIf="form.get('quantidade')?.invalid && (form.get('quantidade')?.touched || form.get('quantidade')?.dirty)" class="error">
+                        <small *ngIf="form.get('quantidade')?.errors?.['required']">Este campo é obrigatório.</small>
+                    </div>
                 </div>
                 <button type="submit">Criar Produto</button>
                 <div *ngIf="message" class="message" [ngClass]="{'is-invalid': isError}">{{message}}</div>

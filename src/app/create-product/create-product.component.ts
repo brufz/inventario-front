@@ -1,8 +1,6 @@
 import { ProductService } from '../services/product.service';
-import { ProductDTO } from '../models/produc-dto';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { error } from 'console';
 
 
 

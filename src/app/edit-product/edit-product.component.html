@@ -7,20 +7,38 @@
                 <div class="form-group">
                     <input formControlName="id" placeholder="ID do Produto" (blur)="loadProductData()"/>
                 </div>
+                <div *ngIf="editProductForm.get('id')?.invalid && (editProductForm.get('id')?.touched || editProductForm.get('id')?.dirty)" class="error">
+                    <small *ngIf="editProductForm.get('id')?.errors?.['required']">Este campo é obrigatório.</small>
+                </div>
                 <div class="form-group">
                     <input formControlName="nome" placeholder="Nome do Produto"/>
+                </div>
+                <div *ngIf="editProductForm.get('nome')?.invalid && (editProductForm.get('nome')?.touched || editProductForm.get('nome')?.dirty)" class="error">
+                    <small *ngIf="editProductForm.get('nome')?.errors?.['required']">Este campo é obrigatório.</small>
                 </div>
                 <div class="form-group">
                     <input formControlName="descricao" placeholder="Descrição"/>
                 </div>
+                <div *ngIf="editProductForm.get('descricao')?.invalid && (editProductForm.get('descricao')?.touched || editProductForm.get('descricao')?.dirty)" class="error">
+                    <small *ngIf="editProductForm.get('descricao')?.errors?.['required']">Este campo é obrigatório.</small>
+                </div>
                 <div class="form-group">
                     <input formControlName="preco" placeholder="Preço"/>
+                </div>
+                <div *ngIf="editProductForm.get('preco')?.invalid && (editProductForm.get('preco')?.touched || editProductForm.get('preco')?.dirty)" class="error">
+                    <small *ngIf="editProductForm.get('preco')?.errors?.['required']">Este campo é obrigatório.</small>
                 </div>
                 <div class="form-group">
                     <input formControlName="quantidade" placeholder="Quantidade"/>
                 </div>
+                <div *ngIf="editProductForm.get('quantidade')?.invalid && (editProductForm.get('quantidade')?.touched || editProductForm.get('quantidade')?.dirty)" class="error">
+                    <small *ngIf="editProductForm.get('quantidade')?.errors?.['required']">Este campo é obrigatório.</small>
+                </div>
                 <div class="form-group">
                     <input formControlName="categoria" placeholder="Categoria"/>
+                </div>
+                <div *ngIf="editProductForm.get('categoria')?.invalid && (editProductForm.get('categoria')?.touched || editProductForm.get('categoria')?.dirty)" class="error">
+                    <small *ngIf="editProductForm.get('categoria')?.errors?.['required']">Este campo é obrigatório.</small>
                 </div>
                 <button type="submit">Salvar Alterações</button>
                 <div *ngIf="message" class="message" [ngClass]="{'is-invalid': isError}">{{message}}</div>
