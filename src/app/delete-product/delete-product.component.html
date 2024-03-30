@@ -1,12 +1,15 @@
 <div class="form-container">
+    <div>
+      <img src="assets/images/delete_6.jpg" width="200px" height="250px" alt="Deletar Produto">
+    </div>
     <div *ngIf="!confirmDelete">
       <input type="number" [(ngModel)]="id" placeholder="Digite o ID do produto" [class.is-invalid]="message.includes('erro')" required>
-      <button (click)="confirmDeletion()">Deletar Produto</button>
+      <button class="color-button" (click)="confirmDeletion()">Deletar Produto</button>
     </div>
     <div *ngIf="confirmDelete">
       <p>Quer mesmo deletar este produto?</p>
-      <button (click)="deleteProductById()">Sim</button>
-      <button (click)="resetAndCancelDeletion()">Não</button>
+      <button  class="color-button" (click)="deleteProductById()">Sim</button>
+      <button  class="color-button" (click)="resetAndCancelDeletion()">Não</button>
     </div>
     <div *ngIf="message" class="message" [ngClass]="{'is-invalid': isError}">{{message}}</div>
 </div>

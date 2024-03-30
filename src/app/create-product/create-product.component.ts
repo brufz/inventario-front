@@ -14,6 +14,8 @@ import { error } from 'console';
 export class CreateProductComponent implements OnInit {
 
   form: FormGroup | undefined;
+  message: string = '';
+  isError: boolean = false;
 
   constructor(private productService: ProductService, private formBuilder: FormBuilder) { }
 
@@ -32,11 +34,18 @@ export class CreateProductComponent implements OnInit {
         this.productService.createProduct(this.form.value, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.yCdPVMPz5eIv_oZ4Js08DhLE4BoOuuXLOnKm6YIsN6A")
           .subscribe((response) => {
             console.log(response);
+            this.message = 'Produto criado com sucesso!';
+            this.isError = false;
+            setTimeout(() => {this.message = '';}, 3000);
             if (this.form) {
               this.form.reset();
             }
           },
-          (error) => { console.log(error); }
+          (error) => { 
+            console.log(error);
+            this.message = 'Erro ao criar produto!'
+            this.isError = true;
+          }
           );
       }
     }

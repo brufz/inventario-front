@@ -2,10 +2,16 @@
   <head></head>
   <body>
     <div class="search-container">
+      <div class="fixed-container">
+      <div class="control-image">
+        <img src="assets/images/find_3.png" width="200px" height="200px" alt="Imagem de busca">
+      </div>
+    </div>
       <div class="search-options" *ngIf="!showIdInput && !showCategoryInput && !product.nome && products.length === 0">
         <button (click)="showIdInput=true; showCategoryInput=false">Buscar Produto por ID</button>
         <button (click)="showCategoryInput=true; showIdInput=false">Buscar Produto por Categoria</button>
       </div>
+    
     
       <div *ngIf="showIdInput || product.nome">
         <input class="button-id" type="number" [(ngModel)]="id" placeholder="Digite o ID do produto" *ngIf="showIdInput">
