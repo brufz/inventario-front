@@ -45,7 +45,7 @@
     
       <div *ngIf="showCategoryInput || products.length > 0">
         <input type="text" [(ngModel)]="categoria" placeholder="Digite a categoria" *ngIf="showCategoryInput">
-        <button (click)="getProductByCategory(); showIdInput=false; showCategoryInput=false" *ngIf="showCategoryInput">Buscar por Categoria</button>
+        <button (click)="getProductByCategory(currentPage, pageSize); showIdInput=false; showCategoryInput=false" *ngIf="showCategoryInput">Buscar por Categoria</button>
     
         <div *ngIf="products.length > 0" class="category-details">
           <h2>Resultado da Busca por Categoria</h2>
@@ -69,6 +69,10 @@
               </tr>
             </tbody>
           </table>
+          <div class="pagination-controls">
+            <button (click)="changePage('prev')" [disabled]="currentPage === 0">Anterior</button>
+            <button (click)="changePage('next')" [disabled]="currentPage >= totalPages - 1 || !totalPages">Próximo</button>
+          </div>
           <button (click)="clear(); clearAll()">Voltar</button>
         </div>
       </div>

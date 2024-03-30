@@ -15,7 +15,10 @@ export class GetProductComponent implements OnInit {
   products: ProductDTO[] = [];
   categoria = this.product.categoria;
   showIdInput: boolean = false;
-  showCategoryInput: boolean = false; 
+  showCategoryInput: boolean = false;
+  currentPage: number = 0;
+  pageSize: number = 10;
+  totalPages: number = 0; 
 
   constructor(private productService: ProductService) { }
 
@@ -36,17 +39,27 @@ export class GetProductComponent implements OnInit {
 
 
 
-  getProductByCategory() : void {
+  getProductByCategory(page: number, size:number) : void {
     this.clear();
     if(this.categoria){
-      this.productService.getProductByCategory(this.categoria, this.token)
+      this.productService.getProductByCategory(this.categoria, this.token, page, size)
         .subscribe((response) => {
-          this.products = response;
+          this.products = response.content;
+          this.totalPages = Math.ceil(response.totalElements / response.size);
           console.log(response)
         },
         (error) => { console.log(error); }
         );
     }
+  }
+
+  changePage(direction: 'next' | 'prev') : void {
+    if(direction === 'next' && this.currentPage < this.totalPages! - 1) {
+      this.currentPage++;
+    } else if (direction === 'prev' && this.currentPage > 0){
+      this.currentPage--;
+    }
+    this.getProductByCategory(this.currentPage, this.pageSize);
   }
 
   clear() : void {
